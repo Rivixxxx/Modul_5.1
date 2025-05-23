@@ -3,711 +3,773 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструкция по работе с системой мониторинга ГлонассСофт</title>
+    <title>Пошаговая инструкция по работе с системой ГлонассСофт</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             line-height: 1.6;
+            background-color: #f9fafb;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1, h2, h3, h4 {
-            color: #2563eb;
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-        }
+        
         h1 {
-            font-size: 2.5rem;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.8rem;
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 5px;
-        }
-        h3 {
-            font-size: 1.5rem;
-        }
-        p {
+            font-size: 2rem;
+            color: #2563eb;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #2563eb;
+            margin-top: 1.5rem;
             margin-bottom: 1rem;
         }
+        
+        h2 {
+            font-size: 1.75rem;
+            color: #2563eb;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: #2563eb;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h4 {
+            font-size: 1.25rem;
+            color: #2563eb;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step {
+            border-left: 4px solid #3b82f6;
+            padding: 10px;
+            background-color: #f8fafc;
+            margin-bottom: 20px;
+        }
+        
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .info {
+            background-color: #d1ecf1;
+            border-left: 4px solid #0dcaf0;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .toc {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .toc-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        
+        .toc a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        code {
+            background-color: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #e2e8f0;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f8fafc;
+        }
+        
         img {
             max-width: 100%;
             height: auto;
-            margin: 15px 0;
-            border: 1px solid #e5e7eb;
-            border-radius: 5px;
+            border-radius: 4px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .toc {
-            background-color: #f3f4f6;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        .toc-link {
-            color: #2563eb;
-            text-decoration: none;
-            display: block;
-            padding: 5px 0;
-        }
-        .toc-link:hover {
-            text-decoration: underline;
-        }
-        .note {
-            background-color: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
-        }
-        .tip {
-            background-color: #dcfce7;
-            border-left: 4px solid #10b981;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
-        }
-        .warning {
-            background-color: #fee2e2;
-            border-left: 4px solid #ef4444;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
-        }
-        code {
-            background-color: #f3f4f6;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-family: Consolas, Monaco, 'Andale Mono', monospace;
-        }
-        .step {
-            margin-bottom: 20px;
-            padding-left: 20px;
-            border-left: 3px solid #2563eb;
-        }
-        .step-number {
-            background-color: #2563eb;
-            color: white;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 8px;
-        }
+        
         @media print {
-            .container {
-                max-width: 100%;
+            .no-print {
+                display: none;
             }
-            h1, h2, h3, h4 {
-                page-break-after: avoid;
+            
+            section {
+                break-inside: avoid;
             }
-            img {
-                max-width: 90%;
+            
+            body {
+                background-color: white;
+            }
+            
+            .section {
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
             }
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <div class="container bg-white shadow-lg">
-        <header class="mb-8 text-center">
-            <h1 class="text-4xl font-bold">Инструкция по работе с системой мониторинга ГлонассСофт</h1>
-            <p class="text-gray-600 text-xl">Руководство для нового сотрудника</p>
+    <div class="container max-w-screen-xl mx-auto px-4 py-8">
+        <header class="mb-8">
+            <h1 class="text-center mb-4">Пошаговая инструкция по работе с системой ГлонассСофт</h1>
+            <p class="text-center text-gray-600 mb-6">Руководство для нового сотрудника по основным операциям в системе мониторинга</p>
+            <div class="w-full flex justify-center">
+                <div class="w-24 border-b-2 border-blue-500"></div>
+            </div>
         </header>
 
-        <div class="toc">
-            <h2 class="text-xl font-bold mb-4">Оглавление</h2>
-            <a href="#introduction" class="toc-link">1. Введение и описание системы</a>
-            <a href="#login" class="toc-link">2. Вход в систему</a>
-            <a href="#client-creation" class="toc-link">3. Создание нового клиента</a>
-            <a href="#object-creation" class="toc-link">4. Создание и настройка объекта (ТС)</a>
-            <a href="#sensors" class="toc-link">5. Добавление и настройка датчиков</a>
-            <a href="#geozones" class="toc-link">6. Создание и настройка геозон</a>
-            <a href="#calibration" class="toc-link">7. Внесение тарировок</a>
-            <a href="#reports" class="toc-link">8. Создание отчетов</a>
-            <a href="#notifications" class="toc-link">9. Настройка уведомлений</a>
-            <a href="#retranslation" class="toc-link">10. Настройка ретрансляции данных</a>
-            <a href="#realtime" class="toc-link">11. Проверка результатов в реальном времени</a>
-            <a href="#conclusion" class="toc-link">12. Заключение</a>
+        <div class="toc" id="contents">
+            <div class="toc-title">Содержание</div>
+            <ol class="list-decimal list-inside">
+                <li><a href="#section1">Создание объекта (ТС) в системе</a></li>
+                <li><a href="#section2">Назначение терминала и прописывание ID</a></li>
+                <li><a href="#section3">Подключение датчиков</a>
+                    <ul class="list-disc list-inside ml-6">
+                        <li><a href="#section3-1">Датчик уровня топлива (ДУТ)</a></li>
+                        <li><a href="#section3-2">Датчик температуры</a></li>
+                        <li><a href="#section3-3">Счетчики</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section4">Внесение тарировок</a></li>
+                <li><a href="#section5">Создание отчетов под клиента</a></li>
+                <li><a href="#section6">Настройка уведомлений</a>
+                    <ul class="list-disc list-inside ml-6">
+                        <li><a href="#section6-1">События</a></li>
+                        <li><a href="#section6-2">Превышения</a></li>
+                        <li><a href="#section6-3">Неисправности</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section7">Создание геозон</a>
+                    <ul class="list-disc list-inside ml-6">
+                        <li><a href="#section7-1">Создание геозон вручную</a></li>
+                        <li><a href="#section7-2">Создание геозон по шаблону</a></li>
+                    </ul>
+                </li>
+                <li><a href="#section8">Настройка ретрансляции</a></li>
+            </ol>
         </div>
 
-        <section id="introduction" class="mb-8">
-            <h2 class="text-2xl font-bold">1. Введение и описание системы</h2>
-            <p>
-                Система мониторинга <strong>ГлонассСофт</strong> предназначена для эффективного контроля и мониторинга транспортных средств с использованием ГЛОНАСС/GPS технологий. 
-                Система позволяет в режиме реального времени отслеживать перемещение транспорта, контролировать расход топлива, 
-                следить за параметрами работы двигателя, а также анализировать полученные данные с помощью разнообразных отчетов.
-            </p>
-            <p>
-                Ключевые возможности системы:
-            </p>
-            <ul class="list-disc pl-8 mb-4">
-                <li>Мониторинг местоположения транспортных средств в режиме реального времени</li>
-                <li>Контроль скоростного режима и маршрутов движения</li>
-                <li>Учет расхода топлива и других эксплуатационных параметров</li>
-                <li>Создание и настройка геозон для контроля перемещения объектов</li>
-                <li>Формирование различных отчетов о работе транспорта</li>
-                <li>Настройка системы уведомлений о событиях</li>
-                <li>Ретрансляция данных в другие системы мониторинга</li>
-            </ul>
-            <p>
-                Данная инструкция поможет вам быстро освоить основные функции системы и начать эффективную работу с ней.
-            </p>
-        </section>
-
-        <section id="login" class="mb-8">
-            <h2 class="text-2xl font-bold">2. Вход в систему</h2>
-            <p>
-                Для начала работы с системой необходимо выполнить вход в панель управления ГлонассСофт.
-            </p>
+        <section id="section1" class="section">
+            <h2>1. Создание объекта (ТС) в системе</h2>
             <div class="step">
-                <p><span class="step-number">1</span> Откройте веб-браузер и введите адрес системы мониторинга: <code>https://hosting.glonasssoft.ru</code> (для ДЦ1) или <code>https://regions.glonasssoft.ru</code> (для ДЦ2).</p>
+                <h4>Шаг 1: Зайти в панель управления</h4>
+                <p>Откройте вкладку "Объекты" в панели управления системы ГлонассСофт.</p>
+                <img src="assets/g1.png" alt="Панель управления - вкладка Объекты" class="my-4 rounded shadow">
             </div>
             <div class="step">
-                <p><span class="step-number">2</span> На странице авторизации введите ваш логин (имя пользователя) и пароль, предоставленные администратором.</p>
-            </div>
-            <div class="tip">
-                <strong>Важно:</strong> При вводе логина и пароля учитывайте регистр символов.
+                <h4>Шаг 2: Создать новый объект</h4>
+                <p>Нажмите кнопку <i class="fas fa-plus-circle text-blue-500"></i> «Добавить объект» для создания и добавления в список нового объекта мониторинга.</p>
             </div>
             <div class="step">
-                <p><span class="step-number">3</span> Нажмите кнопку «Войти».</p>
-            </div>
-            <p>
-                После успешной авторизации вы попадете в основной интерфейс системы мониторинга.
-            </p>
-        </section>
-
-        <section id="client-creation" class="mb-8">
-            <h2 class="text-2xl font-bold">3. Создание нового клиента</h2>
-            <p>
-                В системе ГлонассСофт можно создавать новых клиентов для организации иерархической структуры управления транспортом.
-            </p>
-            <div class="step">
-                <p><span class="step-number">1</span> В верхнем меню панели управления перейдите в раздел «Клиенты».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> Нажмите кнопку «Добавить клиента» <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2/WebHome/image-20220915153508-3.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;"></p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> В открывшейся форме заполните следующие поля:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li><strong>Название компании</strong> — полное наименование клиента</li>
-                    <li><strong>Описание</strong> — дополнительная информация о клиенте</li>
-                    <li><strong>Контактное лицо</strong> — ФИО ответственного лица</li>
-                    <li><strong>Телефон</strong> — контактный номер телефона</li>
-                    <li><strong>Email</strong> — электронная почта для связи</li>
+                <h4>Шаг 3: Заполнить общую информацию</h4>
+                <p>В открывшемся окне настройки объекта заполните следующие поля:</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>Имя объекта</strong> – произвольное имя объекта, которое будет отображаться в системе (обычно гос. номер автомобиля);</li>
+                    <li><strong>Модель</strong> – выберите из справочника или введите вручную модель объекта;</li>
+                    <li><strong>Тип устройства</strong> – выберите тип установленного терминала;</li>
+                    <li><strong>IMEI</strong> – укажите уникальный идентификационный номер терминала, установленного на объекте.</li>
+                </ul>
+                <img src="assets/g2.png" alt="Кнопка Добавить объект" class="my-4 rounded shadow">
+                <p class="mt-2">Дополнительно можно указать:</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li><strong>Подразделение</strong> – выберите подразделение, в которое входит объект;</li>
+                    <li><strong>Номера телефонов (SIM)</strong> – выберите номера установленных в терминал SIM-карт.</li>
                 </ul>
             </div>
             <div class="step">
-                <p><span class="step-number">4</span> После заполнения всех необходимых полей нажмите кнопку «Сохранить».</p>
+                <h4>Шаг 4: Сохранить изменения</h4>
+                <p>После заполнения всех необходимых полей нажмите кнопку "Сохранить" для создания объекта.</p>
             </div>
-            <p>
-                Новый клиент появится в списке клиентов. Теперь вы можете добавлять объекты мониторинга для этого клиента.
-            </p>
-        </section>
-
-        <section id="object-creation" class="mb-8">
-            <h2 class="text-2xl font-bold">4. Создание и настройка объекта (ТС)</h2>
-            <p>
-                Объект (транспортное средство) — это основная единица мониторинга в системе ГлонассСофт. Для добавления нового объекта выполните следующие действия:
-            </p>
-            <div class="step">
-                <p><span class="step-number">1</span> В панели управления перейдите в раздел «Объекты».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> Нажмите кнопку «Добавить объект» <img src="https://docs.glonasssoft.ru/lib/exe/fetch.php?w=20&tok=bcf10f&media=create.png" style="display: inline; width: 20px; height: 20px; vertical-align: middle;"></p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> В открывшемся окне настройки объекта заполните следующие поля:</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2/WebHome/image-20220915152536-1.png?rev=1.1" alt="Окно создания объекта">
-                <ul class="list-disc pl-8 mb-4">
-                    <li><strong>Имя объекта</strong> — название объекта (обычно гос. номер автомобиля)</li>
-                    <li><strong>Модель</strong> — выбирается из справочника или вводится вручную модель объекта</li>
-                    <li><strong>Тип устройства</strong> — выбирается тип установленного терминала</li>
-                    <li><strong>IMEI</strong> — уникальный идентификационный номер терминала, установленного на объекте</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">4</span> Дополнительно можно указать:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li><strong>Подразделение</strong> — выбирается подразделение, в которое входит объект</li>
-                    <li><strong>Номера телефонов (SIM)</strong> — номера установленных в терминал SIM-карт</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">5</span> Нажмите кнопку «Сохранить» для создания объекта.</p>
-            </div>
-            <div class="note">
-                <p>
-                    <strong>Примечание:</strong> Если вы не можете указать Модель объекта или подразделение, то вызовите их список, нажав на кнопку <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2/WebHome/image-20220915153259-2.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">, и если список пуст, то добавьте новую модель объекта или подразделение, нажав кнопку "Добавить" <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2/WebHome/image-20220915153508-3.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;"> внутри окна со списком.
-                </p>
-            </div>
-            <p>
-                После создания объекта вам необходимо настроить установленный на нем терминал. Для этого должны быть указаны <strong>IP-адрес сервера</strong> и <strong>номер порта</strong>, индивидуальный для каждой модели устройства.
-            </p>
-        </section>
-
-        <section id="sensors" class="mb-8">
-            <h2 class="text-2xl font-bold">5. Добавление и настройка датчиков</h2>
-            <p>
-                Датчики — это средства измерения различных параметров объекта. Система ГлонассСофт позволяет настраивать различные типы датчиков: датчики уровня топлива (ДУТ), температурные датчики, счетчики и другие.
-            </p>
-            <div class="step">
-                <p><span class="step-number">1</span> Откройте свойства объекта, для которого нужно добавить датчик.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> Перейдите на вкладку «Датчики».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> Нажмите кнопку «Добавить датчик» <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%94%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%B8/WebHome/image-20220519164727-1.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">4</span> В диалоге добавления датчика заполните следующие поля:</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%94%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%B8/WebHome/image-20220519164727-10.png?rev=1.1" alt="Окно добавления датчика">
-                <ul class="list-disc pl-8 mb-4">
-                    <li><strong>Тип</strong> — выбор типа подключения датчика (простой/виртуальный)</li>
-                    <li><strong>Тип датчика</strong> — определяет функциональное назначение датчика:
-                        <ul class="list-disc pl-8 mb-2">
-                            <li><strong>Зажигание</strong> — определяет включено или выключено зажигание</li>
-                            <li><strong>Уровень топлива</strong> — определяет уровень топлива в баке</li>
-                            <li><strong>Температура двигателя/прицепа</strong> — отображает температуру</li>
-                            <li><strong>Расход топлива</strong> — показывает расход топлива</li>
-                            <li><strong>Обороты двигателя</strong> — показывает частоту оборотов двигателя</li>
-                            <li>Другие типы в зависимости от потребностей мониторинга</li>
-                        </ul>
-                    </li>
-                    <li><strong>Наименование датчика</strong> — название, отображаемое в системе</li>
-                    <li><strong>Тип входа</strong> — выбирается интерфейс подключения датчика (дискретный, аналоговый, импульсный, RS232, RS485, CAN-шина и др.)</li>
-                    <li><strong>Номер входа</strong> — порядковый номер входа, через который поступает информация</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">5</span> При выборе типа тарировки «Таблица» доступна вкладка «Таблица тарировки» для преобразования входных значений в реальные показания.</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%94%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%B8/WebHome/image-20220519164727-17.png?rev=1.1" alt="Таблица тарировки датчика">
-            </div>
-            <div class="step">
-                <p><span class="step-number">6</span> После заполнения всех полей нажмите кнопку «Сохранить».</p>
-            </div>
-            <div class="warning">
-                <p>
-                    <strong>Важно:</strong> Для корректной работы ДУТ (датчика уровня топлива) необходимо правильно настроить тарировочную таблицу. Для аналогового ДУТ нужно создать виртуальный датчик типа «Уровень топлива» с функцией «Выражение». Подробнее см. в документации ГлонассСофт.
-                </p>
-            </div>
-            <h3 class="text-xl font-bold mt-6">Настройка ДУТ (датчика уровня топлива)</h3>
-            <div class="step">
-                <p><span class="step-number">1</span> При создании датчика уровня топлива установите его тип как «Уровень топлива».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> Выберите соответствующий тип входа и номер входа, через который подключен ДУТ.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> Установите тип тарировки «Таблица» для возможности конвертации показаний датчика в литры.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">4</span> Внесите тарировочную таблицу, указав соответствие между показаниями датчика и реальным объемом топлива.</p>
-            </div>
-            <div class="tip">
-                <p>
-                    <strong>Совет:</strong> Для повышения точности показаний ДУТ рекомендуется использовать функцию медианной фильтрации. Установите степень фильтрации от 0 до 255 в зависимости от требуемой степени сглаживания.
-                </p>
+            <div class="info">
+                <p><i class="fas fa-info-circle"></i> <strong>Совет:</strong> Если вам нужно добавить модель объекта или подразделение, которых нет в списке, нажмите на кнопку выбора и воспользуйтесь опцией "Добавить" в списке, или создайте их через панель управления во вкладке <strong>Справочники</strong>.</p>
             </div>
         </section>
 
-        <section id="geozones" class="mb-8">
-            <h2 class="text-2xl font-bold">6. Создание и настройка геозон</h2>
-            <p>
-                Геозоны — это виртуальные географические участки, которые используются для контроля перемещения объектов и генерации уведомлений.
-            </p>
+        <section id="section2" class="section">
+            <h2>2. Назначение терминала</h2>
             <div class="step">
-                <p><span class="step-number">1</span> В системе мониторинга перейдите в раздел «Геообъекты».</p>
+                <h4>Шаг 1: Выбрать тип устройства</h4>
+                <p>В карточке объекта выберите соответствующий тип терминала из выпадающего списка в поле "Тип устройства".</p>
             </div>
             <div class="step">
-                <p><span class="step-number">2</span> Нажмите кнопку «Создать новый геообъект» <img src="https://docs.glonasssoft.ru/lib/exe/fetch.php?media=2021-12-15_09_52_35-_27_%D0%B3%D0%BB%D0%BE%D0%BD%D0%B0%D1%81%D1%81soft_%D0%B8_%D0%B5%D1%89%D0%B5_8_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86_%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C_1_microsoft%E2%80%8B_edge.png" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">.</p>
+                <h4>Шаг 2: Прописать IMEI (ID) терминала</h4>
+                <p>В поле "IMEI" укажите уникальный идентификационный номер терминала. Обычно он указан на корпусе устройства или в сопроводительной документации.</p>
+                <div class="warning">
+                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> IMEI должен быть указан точно, без ошибок и пробелов. Это критически важный параметр для связи с терминалом.</p>
+                </div>
             </div>
             <div class="step">
-                <p><span class="step-number">3</span> В режиме редактирования геообъектов заполните раздел «Общее»:</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%9C%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%20%D0%B3%D0%B5%D0%BE%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2/%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B3%D0%B5%D0%BE%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2/WebHome/image-20240905133655-1.png?rev=1.1" alt="Создание геообъекта">
-                <ul class="list-disc pl-8 mb-4">
-                    <li><strong>Название геообъекта</strong> — уникальное название, которое будет отображаться в системе</li>
-                    <li>Поля «Площадь» и «Периметр» заполнятся автоматически после создания геообъекта на карте</li>
-                </ul>
+                <h4>Шаг 3: Проверить статус терминала</h4>
+                <p>После сохранения проверьте, что терминал отправляет данные и корректно отображается в системе. Перейдите в основной интерфейс системы и убедитесь, что объект виден на карте (при наличии данных с терминала).</p>
+                <img src="assets/g7.png" alt="Статус терминала на карте" class="my-4 rounded shadow">
+            </div>
+            <div class="info">
+                <p><i class="fas fa-info-circle"></i> <strong>Примечание:</strong> При первом подключении терминала может потребоваться некоторое время для установления связи с сервером. Если через 15-20 минут данные не поступают, проверьте правильность введенного IMEI и настройки оборудования.</p>
+            </div>
+        </section>
+
+        <section id="section3" class="section">
+            <h2>3. Подключение датчиков</h2>
+            <p>Раздел посвящен настройке различных датчиков для объекта мониторинга: датчика уровня топлива (ДУТ), датчиков температуры и различных счетчиков.</p>
+            
+            <div id="section3-1">
+                <h3>3.1. Настройка датчика уровня топлива (ДУТ)</h3>
+                <div class="step">
+                    <h4>Шаг 1: Открыть вкладку «Датчики»</h4>
+                    <p>В карточке объекта откройте вкладку «Датчики».</p>
+                    <img src="assets/g8.png" alt="Вкладка Датчики" class="my-4 rounded shadow">
+                </div>
+                <div class="step">
+                    <h4>Шаг 2: Добавить датчик</h4>
+                    <p>Нажмите кнопку <i class="fas fa-plus"></i> «Добавить» для создания нового датчика.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 3: Настроить параметры датчика</h4>
+                    <p>В открывшемся окне настройки заполните параметры:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Тип</strong> - выберите "Простой" для физического датчика</li>
+                        <li><strong>Тип датчика</strong> - выберите "Уровень топлива" из категории "Топливо"</li>
+                        <li><strong>Наименование датчика</strong> - задайте понятное название</li>
+                        <li><strong>Тип входа</strong> - выберите тип интерфейса подключения (обычно "аналоговый" или "RS485")</li>
+                        <li><strong>Номер входа</strong> - укажите номер входа терминала, к которому подключен датчик</li>
+                        <li><strong>Тип тарировки</strong> - выберите "Таблица" для обычного ДУТ</li>
+                    </ul>
+                    <img src="assets/g10.png" alt="Параметры датчика ДУТ" class="my-4 rounded shadow">
+                </div>
+                <div class="step">
+                    <h4>Шаг 4: Настройка дополнительных параметров</h4>
+                    <p>При необходимости настройте дополнительные параметры:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Отображать в подсказке</strong> - включите для показа в интерфейсе системы</li>
+                        <li><strong>Включить медианную фильтрацию</strong> - рекомендуется для сглаживания показаний</li>
+                        <li><strong>Цвет на графике</strong> - выберите цвет для отображения в отчётах</li>
+                    </ul>
+                    <img src="assets/g11.png" alt="Дополнительные параметры датчика" class="my-4 rounded shadow">
+                </div>
+                <div class="info">
+                    <p><i class="fas fa-info-circle"></i> <strong>Важно!</strong> После создания датчика уровня топлива необходимо выполнить его тарировку для корректного определения объема топлива в баке. Процесс тарировки описан в разделе 4 данной инструкции.</p>
+                </div>
+            </div>
+
+            <div id="section3-2" class="mt-8">
+                <h3>3.2. Настройка датчика температуры</h3>
+                <div class="step">
+                    <h4>Шаг 1: Открыть вкладку «Датчики»</h4>
+                    <p>В карточке объекта откройте вкладку «Датчики».</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 2: Добавить датчик</h4>
+                    <p>Нажмите кнопку <i class="fas fa-plus"></i> «Добавить» для создания нового датчика.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 3: Настроить параметры датчика</h4>
+                    <p>В открывшемся окне настройки заполните параметры:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Тип</strong> - выберите "Простой"</li>
+                        <li><strong>Тип датчика</strong> - выберите "Температура двигателя" или "Температура прицепа" из категории "Показатели"</li>
+                        <li><strong>Наименование датчика</strong> - задайте понятное название</li>
+                        <li><strong>Тип входа</strong> - выберите тип интерфейса (обычно "аналоговый", "RS485" или "1-Wire")</li>
+                        <li><strong>Номер входа</strong> - укажите номер входа, к которому подключен датчик</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Шаг 4: Настройка отображения</h4>
+                    <p>Настройте дополнительные параметры:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Отображать в подсказке</strong> - включите для показа в интерфейсе системы</li>
+                        <li><strong>Включить медианную фильтрацию</strong> - рекомендуется включить для температурных датчиков</li>
+                        <li><strong>Цвет на графике</strong> - выберите цвет для отображения</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="section3-3" class="mt-8">
+                <h3>3.3. Настройка счетчиков</h3>
+                <div class="step">
+                    <h4>Шаг 1: Открыть вкладку «Датчики»</h4>
+                    <p>В карточке объекта откройте вкладку «Датчики».</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 2: Добавить счетчик</h4>
+                    <p>Нажмите кнопку <i class="fas fa-plus"></i> «Добавить» для создания нового датчика.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 3: Настроить параметры счетчика</h4>
+                    <p>В открывшемся окне настройки заполните параметры в зависимости от типа счетчика:</p>
+                    
+                    <h5 class="font-semibold mt-3">Для датчика пробега:</h5>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Тип датчика</strong> - выберите "Датчик пробега" из категории "Показатели"</li>
+                        <li><strong>Тип входа</strong> - выберите соответствующий тип</li>
+                        <li><strong>Номер входа</strong> - укажите номер входа</li>
+                        <li><strong>Тип тарировки</strong> - для пробега обычно используется "Накопитель"</li>
+                    </ul>
+                    
+                    <h5 class="font-semibold mt-3">Для топливораздачи:</h5>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Тип датчика</strong> - выберите "Топливораздача" из категории "Топливо"</li>
+                        <li><strong>Тип входа</strong> - выберите подходящий тип (обычно "импульсный")</li>
+                        <li><strong>Номер входа</strong> - укажите номер входа</li>
+                        <li><strong>Тип тарировки</strong> - для импульсных датчиков обычно "Накопитель"</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Шаг 4: Дополнительные настройки</h4>
+                    <p>Для датчика пробега в разделе "Нормы" укажите параметр "Расчет пробега" как "по датчику пробега", если хотите использовать показания этого счетчика вместо GPS.</p>
+                    <div class="warning">
+                        <p><i class="fas fa-exclamation-triangle"></i> <strong>Важно!</strong> Для правильной работы датчика пробега необходимо создать тарировочную таблицу с точками 0:0; 9999999:9999999, чтобы избежать ошибок при расчете пробега и обнулений.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section4" class="section">
+            <h2>4. Внесение тарировок</h2>
+            <div class="step">
+                <h4>Шаг 1: Открыть вкладку «Датчики»</h4>
+                <p>В карточке объекта перейдите на вкладку «Датчики» и выберите датчик, для которого требуется выполнить тарировку (обычно это датчик уровня топлива).</p>
             </div>
             <div class="step">
-                <p><span class="step-number">4</span> В разделе «Отображение» настройте стиль отображения геообъекта на карте:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li>Цвет, прозрачность и толщина контура</li>
-                    <li>Цвет и прозрачность заливки</li>
-                    <li>Настройки видимости в зависимости от масштаба карты</li>
-                </ul>
+                <h4>Шаг 2: Открыть таблицу тарировки</h4>
+                <p>Выберите датчик и нажмите кнопку "Редактировать" <i class="fas fa-edit"></i>. Перейдите на вкладку "Таблица тарировки" в окне редактирования датчика.</p>
+                <img src="assets/g12.png" alt="Вкладка Таблица тарировки" class="my-4 rounded shadow">
             </div>
             <div class="step">
-                <p><span class="step-number">5</span> Для создания геообъекта на карте используйте инструмент «Рисовать полигон» <img src="https://docs.glonasssoft.ru/lib/exe/fetch.php?media=2021-12-15_10_59_27-_127_%D0%B3%D0%BB%D0%BE%D0%BD%D0%B0%D1%81%D1%81soft_%D0%B8_%D0%B5%D1%89%D0%B5_8_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86_%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C_1_microsoft%E2%80%8B_edge.png" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">:</p>
-                <ol class="list-decimal pl-8 mb-4">
-                    <li>Кликните левой кнопкой мыши по карте, где вы хотите начать создание геообъекта</li>
-                    <li>Последовательно отмечайте точки, формируя контур геообъекта</li>
-                    <li>Для завершения рисования дважды кликните по последней точке</li>
+                <h4>Шаг 3: Заполнить таблицу тарировки</h4>
+                <p>Добавьте в таблицу соответствия между цифровым сигналом и реальным объемом топлива. Для этого нажимайте кнопку "Добавить" и вводите пары значений.</p>
+                <img src="assets/g13.jpg" alt="Пример таблицы тарировки" class="my-4 rounded shadow">
+            </div>
+            <div class="step">
+                <h4>Шаг 4: Создание дополнительных таблиц тарировки (при необходимости)</h4>
+                <p>Если вам необходимо создать дополнительную таблицу тарировки (например, при замене датчика):</p>
+                <ol class="list-decimal list-inside">
+                    <li>Перейдите в список дополнительных таблиц тарировки в карточке датчика</li>
+                    <li>Нажмите кнопку "Добавить"</li>
+                    <li>Заполните таблицу тарировки и укажите время начала применения таблицы</li>
+                    <li>Сохраните настройки</li>
                 </ol>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%9C%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%20%D0%B3%D0%B5%D0%BE%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2/%D0%A1%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D1%80%D0%B5%D0%B4%D0%B0%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B3%D0%B5%D0%BE%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2/WebHome/image-20240905133710-2.png?rev=1.1" alt="Рисование геообъекта">
+                <div class="info">
+                    <p><i class="fas fa-info-circle"></i> <strong>Примечание:</strong> Дополнительные таблицы тарировки позволяют применять разные тарировки для одного датчика в разные периоды времени. Это необходимо при замене датчиков или изменении конфигурации.</p>
+                </div>
             </div>
             <div class="step">
-                <p><span class="step-number">6</span> Настройте даты начала и окончания расчета геособытий, чтобы указать период активности геообъекта.</p>
-            </div>
-            <div class="note">
-                <p>
-                    <strong>Примечание:</strong> Существуют ограничения по размеру и количеству геообъектов:
-                </p>
-                <ul class="list-disc pl-6">
-                    <li>Максимальный размер одного геообъекта — 1 млн. га</li>
-                    <li>Максимальное количество геообъектов — 5 тыс. штук</li>
-                    <li>Общая площадь всех геообъектов — не более 10 млн. га</li>
-                </ul>
-            </div>
-            <div class="tip">
-                <p>
-                    <strong>Совет:</strong> Для более сложных геообъектов вы можете использовать инструмент «Вырезать» <img src="https://docs.glonasssoft.ru/lib/exe/fetch.php?media=2021-12-15_11_11_36-_180_%D0%B3%D0%BB%D0%BE%D0%BD%D0%B0%D1%81%D1%81soft_%D0%B8_%D0%B5%D1%89%D0%B5_8_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86_%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C_1_microsoft%E2%80%8B_edge.png" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">, чтобы исключать отдельные зоны из площади геообъекта.
-                </p>
-            </div>
-        </section>
-
-        <section id="calibration" class="mb-8">
-            <h2 class="text-2xl font-bold">7. Внесение тарировок</h2>
-            <p>
-                Тарировка — это процесс калибровки датчиков, который позволяет преобразовать абстрактные значения, поступающие от датчиков, в реальные физические величины (литры, градусы, проценты и т.д.).
-            </p>
-            <h3 class="text-xl font-bold mt-6">Тарировка датчика уровня топлива (ДУТ)</h3>
-            <div class="step">
-                <p><span class="step-number">1</span> Откройте свойства объекта и перейдите на вкладку «Датчики».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> Выберите датчик уровня топлива и нажмите кнопку «Редактировать датчик» <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%94%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%B8/WebHome/image-20220519164727-2.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> Установите тип тарировки «Таблица» и перейдите на вкладку «Таблица тарировки».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">4</span> В таблице тарировки внесите соответствие между входными значениями датчика и реальным объемом топлива:</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%94%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%B8/WebHome/image-20220519164727-17.png?rev=1.1" alt="Таблица тарировки">
-                <ul class="list-disc pl-8 mb-4">
-                    <li>Левый столбец «X» — входное значение, которое приходит от оборудования</li>
-                    <li>Правый столбец «Y» — выходное значение, которое должно использоваться в отчетах (например, литры)</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">5</span> Для добавления новой строки в таблицу тарировки нажмите кнопку <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%94%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%B8/WebHome/image-20220519164727-13.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">6</span> После внесения всех точек тарировки нажмите кнопку «Сохранить».</p>
-            </div>
-            <div class="tip">
-                <p>
-                    <strong>Совет:</strong> Вы можете импортировать таблицу тарировки из другого датчика или из Excel, нажав кнопку <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%94%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%B8/WebHome/image-20220519164727-15.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">.
-                </p>
-            </div>
-            <h3 class="text-xl font-bold mt-6">Тарировка других типов датчиков</h3>
-            <p>
-                Процесс тарировки аналогичен для других типов датчиков, но значения и единицы измерения будут отличаться в зависимости от типа датчика:
-            </p>
-            <ul class="list-disc pl-8 mb-4">
-                <li><strong>Для температурных датчиков</strong> — соответствие между входными значениями и градусами</li>
-                <li><strong>Для счетчиков</strong> — соответствие между импульсами и единицами измерения (литры, кубометры и т.д.)</li>
-                <li><strong>Для расходомеров</strong> — выберите тип тарировки «Накопитель» или «Разница от пред.»</li>
-            </ul>
-            <div class="warning">
-                <p>
-                    <strong>Важно:</strong> При тарировке датчиков типа «Накопитель» обязательно укажите максимальное значение параметра в поле «Макс. значение». Это позволит системе корректно рассчитать «обнуление» датчика при достижении максимума.
-                </p>
-            </div>
-        </section>
-
-        <section id="reports" class="mb-8">
-            <h2 class="text-2xl font-bold">8. Создание отчетов</h2>
-            <p>
-                Отчеты используются для контроля различных показателей, получаемых от объектов мониторинга. Система ГлонассСофт предлагает различные типы отчетов для анализа данных.
-            </p>
-            <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%9E%D1%82%D1%87%D0%B5%D1%82%D1%8B/%D0%9F%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%D1%82%D1%87%D0%B5%D1%82%D0%BE%D0%B2/WebHome/%D0%9E%D0%BA%D0%BD%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%87%D0%B5%D0%B5.jpg?rev=1.1" alt="Окно создания отчета">
-            <div class="step">
-                <p><span class="step-number">1</span> Для построения отчета перейдите в раздел «Отчеты».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> Выполните следующую последовательность действий:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li><strong>Выберите объекты для отчета</strong> — Отметьте в списке нужные объекты мониторинга</li>
-                    <li><strong>Выберите отчетный период</strong> — Укажите диапазон дат для анализа</li>
-                    <li><strong>Выберите тип отчета</strong> — Выберите подходящий тип отчета из доступных</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> При необходимости настройте дополнительные параметры отчета, нажав кнопку «Настройка».</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%9E%D1%82%D1%87%D0%B5%D1%82%D1%8B/%D0%9F%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%D1%82%D1%87%D0%B5%D1%82%D0%BE%D0%B2/WebHome/image-20221024111149-3.png?rev=1.1" alt="Настройки отчета">
-            </div>
-            <div class="step">
-                <p><span class="step-number">4</span> Нажмите кнопку «Построить» для формирования отчета.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">5</span> Полученный отчет можно экспортировать в формате .xlsx или .pdf, используя соответствующие кнопки <img src="https://docs.glonasssoft.ru/lib/exe/fetch.php?w=60&tok=a82ee1&media=exp_1.png" style="display: inline; width: 60px; height: auto; vertical-align: middle;">.</p>
-            </div>
-            <h3 class="text-xl font-bold mt-6">Основные типы отчетов</h3>
-            <p>
-                Система ГлонассСофт предлагает следующие базовые типы отчетов:
-            </p>
-            <ul class="list-disc pl-8 mb-4">
-                <li><strong>Посещение Геообъектов</strong> — отображает посещаемость выбранных геообъектов объектами мониторинга</li>
-                <li><strong>Движения и остановки</strong> — данные о движении и остановках выбранных объектов</li>
-                <li><strong>Заправочная ведомость</strong> — данные о заправках объектов</li>
-                <li><strong>Рейсы</strong> — сводные данные о пробеге, моточасах, топливе по рейсам</li>
-                <li><strong>Сливы и заправки</strong> — данные о сливах и заправках топлива</li>
-                <li><strong>События</strong> — хронология всех событий, произошедших с объектами</li>
-                <li><strong>Топливо посуточный и Топливо сводный</strong> — данные по топливу в различных форматах</li>
-            </ul>
-            <p>
-                Также доступны дополнительные типы отчетов:
-            </p>
-            <ul class="list-disc pl-8 mb-4">
-                <li><strong>Активность объектов</strong> — суммарное время активности объекта за период</li>
-                <li><strong>Ведомость пробегов</strong> — суммарное время пробегов и количество отработанных моточасов</li>
-                <li><strong>Навигационный</strong> — данные о навигации объекта</li>
-                <li><strong>Плата за проезд по трассам</strong> — оценка затрат на перевозки по трассам</li>
-                <li><strong>Подневные пробеги</strong> — ежедневные пробеги объекта за выбранный период</li>
-            </ul>
-            <div class="tip">
-                <p>
-                    <strong>Совет:</strong> В пользовательских настройках в разделе «Отчеты» можно настроить дополнительные параметры отображения для различных типов отчетов.
-                </p>
-            </div>
-        </section>
-
-        <section id="notifications" class="mb-8">
-            <h2 class="text-2xl font-bold">9. Настройка уведомлений</h2>
-            <p>
-                Система уведомлений позволяет настроить автоматическое оповещение о различных событиях, таких как превышение скорости, срабатывание датчиков, въезд и выезд из геозон и другие.
-            </p>
-            <div class="step">
-                <p><span class="step-number">1</span> Перейдите в раздел «Уведомления» в панели управления.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> Нажмите кнопку «Создать» <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%20%22%D0%9E%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%8B%22/%D0%94%D0%B0%D1%82%D1%87%D0%B8%D0%BA%D0%B8/WebHome/image-20220519164727-19.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> Настройка уведомлений состоит из следующих шагов:</p>
-                <h4 class="font-bold">Шаг 1 - Выбор шаблона события</h4>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9/WebHome/image-20250319154103-1.png?rev=1.1" alt="Выбор шаблона события">
-                <p>Выберите один из предустановленных шаблонов:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li>Превышение скорости</li>
-                    <li>Сработка дискретного датчика</li>
-                    <li>Въезд и выезд из геозоны</li>
-                    <li>Значение аналогового датчика</li>
-                    <li>Сработка тревожной кнопки</li>
-                    <li>И другие</li>
-                </ul>
-                
-                <h4 class="font-bold">Шаг 2 - Выбор объекта</h4>
-                <p>Выберите объекты или группы объектов, от которых хотите получать уведомления.</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9/WebHome/image-20221018093958-1.png?rev=1.1" alt="Выбор объекта">
-                
-                <h4 class="font-bold">Шаг 3 - Выбор геообъекта</h4>
-                <p>При необходимости выберите геообъекты, для которых будут работать уведомления.</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9/WebHome/image-20221018094006-2.png?rev=1.1" alt="Выбор геообъекта">
-                
-                <h4 class="font-bold">Шаг 4 - Выбор действия</h4>
-                <p>Настройте способ получения уведомлений:</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9/WebHome/2024-11-19_11-17-55.png?rev=1.1" alt="Выбор действия">
-                <ul class="list-disc pl-8 mb-4">
-                    <li>В Telegram</li>
-                    <li>В мобильном приложении</li>
-                    <li>В web-версии</li>
-                    <li>На электронную почту</li>
-                    <li>На указанный URL (Webhook)</li>
-                </ul>
-                
-                <h4 class="font-bold">Шаг 5 - Выбор пользователя</h4>
-                <p>Укажите пользователей, которые будут получать уведомления.</p>
-                
-                <h4 class="font-bold">Шаг 6 - Вид уведомления</h4>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9/WebHome/image-20240227165555-1.png?rev=1.1" alt="Вид уведомления">
-                <p>Выберите тип уведомления:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li><strong>Информационные уведомления</strong> — информируют о событии и могут быть закрыты нажатием одной кнопки</li>
-                    <li><strong>Уведомления с подтверждением</strong> — не могут быть закрыты без внесения комментария</li>
-                </ul>
-                
-                <h4 class="font-bold">Шаг 7 - Срок действия уведомлений</h4>
-                <p>Настройте время действия уведомления (до 90 дней) и периоды активности.</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9/WebHome/2025-02-27_10-55-10.png?rev=1.1" alt="Срок действия уведомлений">
-            </div>
-            <div class="step">
-                <p><span class="step-number">4</span> После настройки всех параметров нажмите кнопку «Сохранить».</p>
-            </div>
-            <h3 class="text-xl font-bold mt-6">Настройка звука уведомлений</h3>
-            <div class="step">
-                <p><span class="step-number">1</span> Для настройки звукового сопровождения перейдите в пользовательские настройки в раздел «Общие».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> В графе «Уведомления» настройте расположение уведомлений, время их отображения и звук.</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%BC%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%D0%B0/%D0%A3%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%20%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9/WebHome/image-20221018095350-15.png?rev=1.1" alt="Настройка звука уведомлений">
-            </div>
-            <div class="tip">
-                <p>
-                    <strong>Совет:</strong> Рекомендуется установить громкость звука уведомлений на уровне около 50%, чтобы отчетливо слышать сигнал уведомления, но не отвлекаться от работы.
-                </p>
-            </div>
-        </section>
-
-        <section id="retranslation" class="mb-8">
-            <h2 class="text-2xl font-bold">10. Настройка ретрансляции данных</h2>
-            <p>
-                Ретрансляция позволяет передавать телематическую информацию с сервера ГлонассСофт на другие серверы мониторинга.
-            </p>
-            <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B5%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F/WebHome/%D1%80%D0%B5%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%82%D0%BE%D1%80.png?rev=1.1" alt="Интерфейс ретрансляции">
-            <div class="step">
-                <p><span class="step-number">1</span> В панели управления перейдите в раздел «Ретрансляция».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">2</span> Нажмите кнопку «Добавить ретранслятор» <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B5%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F/WebHome/image-20250129082600-17.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> В окне создания ретранслятора заполните следующие поля:</p>
-                <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B5%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F/WebHome/image-20221117111545-1.png?rev=1.1" alt="Окно создания ретранслятора">
-                <ul class="list-disc pl-8 mb-4">
-                    <li><strong>Описание</strong> — название ретранслятора или цель его создания</li>
-                    <li><strong>Подписчик</strong> — клиент, объекты которого необходимо ретранслировать</li>
-                    <li><strong>Тип протокола</strong> — выберите необходимый протокол из выпадающего списка</li>
-                    <li><strong>Адрес</strong> — укажите адрес сервера, куда нужно ретранслировать данные (в формате IP:PORT)</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">4</span> Выберите объекты для ретрансляции из списка доступных объектов.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">5</span> При необходимости измените IMEI объектов в ретранслируемых данных:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li>Для изменения IMEI одного объекта дважды кликните на IMEI в таблице и введите новый номер</li>
-                    <li>Для массового изменения выделите нужные объекты и используйте поля «Длина» и «Префикс» внизу таблицы</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">6</span> После заполнения всех полей нажмите кнопку «Сохранить».</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">7</span> Для активации ретранслятора выделите его в списке и нажмите кнопку «Активировать» <img src="https://wiki.glonasssoft.ru/bin/download/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C%20%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F/%D0%A0%D0%B5%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%86%D0%B8%D1%8F/WebHome/image-20250129082906-21.png?rev=1.1" style="display: inline; width: 20px; height: 20px; vertical-align: middle;">.</p>
+                <h4>Шаг 5: Сохранить изменения</h4>
+                <p>После внесения всех необходимых значений в таблицу тарировки нажмите кнопку "Сохранить".</p>
             </div>
             <div class="warning">
-                <p>
-                    <strong>Важно:</strong> Ретрансляторы могут быть автоматически заблокированы при возникновении следующих условий:
-                </p>
-                <ul class="list-disc pl-6">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> Удалить первую или единственную таблицу тарировки без даты начала применения невозможно.</p>
+            </div>
+        </section>
+
+        <section id="section5" class="section">
+            <h2>5. Создание отчетов под клиента</h2>
+            <div class="step">
+                <h4>Шаг 1: Перейти в раздел отчетов</h4>
+                <p>В главном меню выберите вкладку "Отчеты".</p>
+                <img src="assets/g14.png" alt="Вкладка Отчеты" class="my-4 rounded shadow">
+            </div>
+            <div class="step">
+                <h4>Шаг 2: Выбрать объекты для отчета</h4>
+                <p>В области выбора объектов отметьте транспортные средства или геообъекты, для которых необходимо создать отчет.</p>
+                <img src="assets/g15.jpg" alt="Выбор объектов для отчета" class="my-4 rounded shadow">
+            </div>
+            <div class="step">
+                <h4>Шаг 3: Выбрать отчетный период</h4>
+                <p>Укажите временной интервал, за который требуется построить отчет, используя календарь.</p>
+            </div>
+            <div class="step">
+                <h4>Шаг 4: Выбрать тип отчета</h4>
+                <p>Выберите необходимый тип отчета из доступных категорий:</p>
+            </div>
+            <div class="step">
+                <h4>Шаг 5: Настроить параметры отчета</h4>
+                <p>Нажмите на кнопку "Настройка" для детальной настройки параметров выбранного отчета. Доступные настройки зависят от типа отчета.</p>
+                <p>Наиболее распространенные настройки:</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Формат отображения топлива, пробега и продолжительности</li>
+                    <li>Настройки учета топлива по суткам</li>
+                    <li>Параметры отображения превышений скорости</li>
+                    <li>Опции расчета пробега и времени между геообъектами</li>
+                </ul>
+            </div>
+            <div class="step">
+                <h4>Шаг 6: Сформировать и сохранить отчет</h4>
+                <p>Нажмите кнопку "Сформировать" для построения отчета. После формирования отчета вы можете:</p>
+                <img src="assets/g17.png" alt="Готовый отчет и экспорт" class="my-4 rounded shadow">
+                <img src="assets/g18.png" alt="Готовый отчет и экспорт" class="my-4 rounded shadow">
+            </div>
+            <div class="step">
+                <h4>Шаг 7: Сохранение отчета как шаблона (опционально)</h4>
+                <p>Для создания персонализированного отчета под конкретного клиента:</p>
+                <ol class="list-decimal list-inside">
+                    <li>Настройте все параметры отчета под требования клиента</li>
+                    <li>Нажмите "Сохранить как шаблон"</li>
+                    <li>Введите название шаблона отчета</li>
+                    <li>В будущем вы сможете быстро формировать отчет с этими параметрами, выбрав его в разделе "Мои отчеты"</li>
+                </ol>
+            </div>
+            <div class="success">
+                <p><i class="fas fa-check-circle"></i> <strong>Рекомендация:</strong> Давайте шаблонам отчетов осмысленные названия, включая имя клиента и тип отчета (например, "ООО Транс - Ежемесячный отчет по топливу"). Это упростит поиск нужного отчета в будущем.</p>
+            </div>
+        </section>
+
+        <section id="section6" class="section">
+            <h2>6. Настройка уведомлений</h2>
+            <p>В этом разделе описывается настройка различных типов уведомлений: о событиях, превышениях и неисправностях.</p>
+
+            <div id="section6-1">
+                <h3>6.1. Настройка уведомлений о событиях</h3>
+                <div class="step">
+                    <h4>Шаг 1: Перейти в раздел уведомлений</h4>
+                    <p>В главном меню выберите вкладку "Уведомления".</p>
+                    <img src="assets/g19.jpg" alt="Вкладка Уведомления" class="my-4 rounded shadow">
+                </div>
+                <div class="step">
+                    <h4>Шаг 2: Создать новое уведомление</h4>
+                    <p>Нажмите кнопку "Добавить" <i class="fas fa-plus"></i> для создания нового уведомления.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 3: Выбрать шаблон события</h4>
+                    <p>В первом шаге выберите шаблон события из списка доступных шаблонов. Для уведомлений о событиях подходят следующие шаблоны:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Сработка дискретного датчика</li>
+                        <li>Въезд и выезд из геозоны</li>
+                        <li>Сработка тревожной кнопки</li>
+                    </ul>
+                    <img src="assets/g21.png" alt="Выбор шаблона уведомления" class="my-4 rounded shadow">
+                </div>
+                <div class="step">
+                    <h4>Шаг 4: Выбрать объекты</h4>
+                    <p>Выберите объекты или группы объектов, для которых будет действовать уведомление.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 5: Выбрать геообъекты (при необходимости)</h4>
+                    <p>Если выбран шаблон "Въезд и выезд из геозоны", укажите геообъекты, для которых будет работать уведомление.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 6: Настроить действия</h4>
+                    <p>Выберите способы доставки уведомлений:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>В Telegram</li>
+                        <li>В мобильном приложении</li>
+                        <li>В web-версии</li>
+                        <li>На электронную почту</li>
+                        <li>На указанный URL (Webhook)</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Шаг 7: Выбрать пользователей</h4>
+                    <p>Укажите пользователей, которые должны получать данные уведомления.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 8: Настроить вид уведомления</h4>
+                    <p>Выберите тип уведомления:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Информационное (закрывается одной кнопкой)</li>
+                        <li>С подтверждением (требует комментария для закрытия)</li>
+                    </ul>
+                    <p>При необходимости активируйте опцию "Хранить уведомления в журнале".</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 9: Задать срок действия</h4>
+                    <p>Укажите срок действия уведомления (до 90 дней) и настройте периоды активности.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 10: Сохранить настройки</h4>
+                    <p>Нажмите кнопку "Сохранить" для создания уведомления.</p>
+                </div>
+            </div>
+
+            <div id="section6-2" class="mt-8">
+                <h3>6.2. Настройка уведомлений о превышениях</h3>
+                <div class="step">
+                    <h4>Шаг 1: Перейти в раздел уведомлений</h4>
+                    <p>В главном меню выберите вкладку "Уведомления".</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 2: Создать новое уведомление</h4>
+                    <p>Нажмите кнопку "Добавить" <i class="fas fa-plus"></i> для создания нового уведомления.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 3: Выбрать шаблон превышения</h4>
+                    <p>В первом шаге выберите шаблон "Превышение скорости".</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 4: Настроить параметры превышения</h4>
+                    <p>Укажите порог скорости и минимальное время продолжительности события.</p>
+                    <div class="info">
+                        <p><i class="fas fa-info-circle"></i> <strong>Совет:</strong> Рекомендуется устанавливать минимальное время продолжительности около 10-15 секунд, чтобы избежать ложных срабатываний при кратковременных превышениях.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <h4>Шаг 5: Выбрать объекты</h4>
+                    <p>Выберите объекты или группы объектов, для которых будет действовать уведомление.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 6: Настроить действия и получателей</h4>
+                    <p>Настройте способы доставки уведомлений и выберите пользователей, следуя шагам 6-9 из раздела 6.1.</p>
+                </div>
+            </div>
+
+            <div id="section6-3" class="mt-8">
+                <h3>6.3. Настройка уведомлений о неисправностях</h3>
+                <div class="step">
+                    <h4>Шаг 1: Перейти в раздел уведомлений</h4>
+                    <p>В главном меню выберите вкладку "Уведомления".</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 2: Создать новое уведомление</h4>
+                    <p>Нажмите кнопку "Добавить" <i class="fas fa-plus"></i> для создания нового уведомления.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 3: Выбрать подходящий шаблон</h4>
+                    <p>Для уведомлений о неисправностях выберите один из подходящих шаблонов:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Значение аналогового датчика (для мониторинга критических показателей)</li>
+                        <li>Потеря связи (для уведомлений об отсутствии данных от терминала)</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Шаг 4: Настроить параметры уведомления</h4>
+                    <p>В зависимости от выбранного шаблона, настройте соответствующие параметры:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><strong>Для аналогового датчика:</strong> выберите датчик и укажите пороговые значения</li>
+                        <li><strong>Для потери связи:</strong> укажите время, после которого считать связь потерянной</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Шаг 5: Завершить настройку</h4>
+                    <p>Выберите объекты, настройте действия и получателей, задайте срок действия уведомления и сохраните настройки.</p>
+                </div>
+                <div class="success">
+                    <p><i class="fas fa-check-circle"></i> <strong>Рекомендация:</strong> Для уведомлений о неисправностях рекомендуется настраивать доставку по нескольким каналам (например, в web-интерфейсе и по email или в Telegram) для повышения вероятности своевременного обнаружения проблемы.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="section7" class="section">
+            <h2>7. Создание геозон</h2>
+
+            <div id="section7-1">
+                <h3>7.1. Создание геозон вручную</h3>
+                <div class="step">
+                    <h4>Шаг 1: Перейти в раздел геообъектов</h4>
+                    <p>Выберите вкладку "Геообъекты" в главном меню системы.</p>
+                    <img src="assets/g22.png" alt="Вкладка Геообъекты" class="my-4 rounded shadow">
+                </div>
+                <div class="step">
+                    <h4>Шаг 2: Создать новый геообъект</h4>
+                    <p>Нажмите кнопку "Создать новый геообъект" <i class="fas fa-plus-circle"></i> для перехода в режим редактирования геообъектов.</p>
+                    <img src="assets/g23.png" alt="Создать геообъект" class="my-4 rounded shadow">
+                </div>
+                <div class="step">
+                    <h4>Шаг 3: Ввести название геообъекта</h4>
+                    <p>В разделе "Общее" введите название геообъекта в активное поле.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 4: Настроить отображение геообъекта</h4>
+                    <p>В разделе "Отображение" настройте параметры отображения геообъекта на карте:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Цвет контура</li>
+                        <li>Прозрачность и толщину линии</li>
+                        <li>Цвет и прозрачность заливки</li>
+                        <li>Видимость на карте в зависимости от масштаба</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Шаг 5: Нарисовать геообъект на карте</h4>
+                    <p>Выберите инструмент "Рисовать полигон" <i class="fas fa-draw-polygon"></i> и отметьте точки геообъекта на карте:</p>
+                    <img src="assets/g24.png" alt="Рисование геообъекта на карте" class="my-4 rounded shadow">
+                </div>
+                <div class="step">
+                    <h4>Шаг 6: Настроить параметры расчета</h4>
+                    <p>В разделе "Расчет геособытий" настройте даты начала и окончания расчета событий для этого геообъекта. По умолчанию дата начала расчета событий устанавливается как дата создания геообъекта.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 7: Сохранить геообъект</h4>
+                    <p>После всех настроек нажмите кнопку "Сохранить".</p>
+                </div>
+                <div class="warning">
+                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> Существуют ограничения по размеру и количеству геообъектов:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Максимальная площадь одного геообъекта: 1 млн. га</li>
+                        <li>Максимальное количество геообъектов: 5 тыс. штук</li>
+                        <li>Максимальная общая площадь всех геообъектов: 10 млн. га</li>
+                    </ul>
+                    <p>При необходимости изменения этих ограничений обратитесь к своему менеджеру.</p>
+                </div>
+            </div>
+
+            <div id="section7-2" class="mt-8">
+                <h3>7.2. Создание геозон по шаблону (импорт)</h3>
+                <div class="step">
+                    <h4>Шаг 1: Перейти в раздел геообъектов</h4>
+                    <p>Выберите вкладку "Геообъекты" в главном меню системы.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 2: Открыть мастер импорта</h4>
+                    <p>Нажмите на кнопку "Экспорт/Импорт" <i class="fas fa-exchange-alt"></i> для открытия мастера загрузки файлов геообъектов.</p>
+                    <img src="assets/g25.jpg" alt="Создать геообъект" class="my-4 rounded shadow">
+                </div>
+                <div class="step">
+                    <h4>Шаг 3: Выбрать файл для импорта</h4>
+                    <p>В мастере загрузки выберите файл с геообъектами. Поддерживаемые форматы:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>KML</li>
+                        <li>KMZ</li>
+                        <li>CSV</li>
+                        <li>ShapeFile</li>
+                        <li>MapInfo</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Шаг 4: Настроить параметры отображения</h4>
+                    <p>В мастере настройте стилистические параметры импортируемых геообъектов:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Цвет</li>
+                        <li>Заливка</li>
+                        <li>Толщина линий</li>
+                    </ul>
+                </div>
+                <div class="step">
+                    <h4>Шаг 5: Проверить параметры импорта</h4>
+                    <p>На финальном шаге проверьте данные о таких параметрах как:</p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Проекция</li>
+                        <li>Кодировка</li>
+                        <li>Площадь загружаемых геообъектов</li>
+                    </ul>
+                    <p>При необходимости укажите ширину и радиус геообъекта.</p>
+                </div>
+                <div class="step">
+                    <h4>Шаг 6: Завершить импорт</h4>
+                    <p>Нажмите кнопку "Завершить" или "Импортировать", чтобы создать геообъекты на основе импортированных данных.</p>
+                </div>
+                <div class="info">
+                    <p><i class="fas fa-info-circle"></i> <strong>Примечание:</strong> При импорте дата начала/дата завершения устанавливается датой создания. Перерасчет назад запускается только после создания поля, после редактирования не запускается.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="section8" class="section">
+            <h2>8. Настройка ретрансляции</h2>
+            <div class="step">
+                <h4>Шаг 1: Открыть вкладку «Ретрансляция»</h4>
+                <p>В панели управления перейдите на вкладку «Ретрансляция».</p>
+                <img src="assets/g26.png" alt="Вкладка Ретрансляция" class="my-4 rounded shadow">
+            </div>
+            <div class="step">
+                <h4>Шаг 2: Создать новый ретранслятор</h4>
+                <p>Нажмите кнопку <i class="fas fa-plus"></i> «Добавить ретранслятор».</p>
+                <img src="assets/g27.png" alt="Добавить ретранслятор" class="my-4 rounded shadow">
+            </div>
+            <div class="step">
+                <h4>Шаг 3: Заполнить параметры ретранслятора</h4>
+                <p>Заполните следующие поля:</p>
+            </div>
+            <div class="step">
+                <h4>Шаг 4: Выбрать объекты для ретрансляции</h4>
+                <p>После выбора подписчика в таблице <strong>Все объекты</strong> отобразятся объекты данного клиента. Переместите нужные объекты в правую таблицу <strong>Объекты для ретрансляции</strong>.</p>
+                <img src="assets/g28.png" alt="Выбор объектов для ретрансляции" class="my-4 rounded shadow">
+            </div>
+            <div class="step">
+                <h4>Шаг 5: Настроить параметры объектов (при необходимости)</h4>
+                <p>При необходимости вы можете изменить IMEI объектов в ретранслируемых данных:</p>
+                <ol class="list-decimal list-inside">
+                    <li>Добавьте объект в поле для ретрансляции</li>
+                    <li>Дважды кликните на IMEI объекта</li>
+                    <li>Измените номер на требуемый</li>
+                </ol>
+                <p>Для массового изменения IMEI у нескольких объектов:</p>
+                <ol class="list-decimal list-inside">
+                    <li>Выделите нужные объекты</li>
+                    <li>Внизу таблицы впишите длину символов, которую необходимо оставить</li>
+                    <li>В поле "Префикс" укажите необходимые цифры, которые должны быть написаны перед IMEI</li>
+                </ol>
+            </div>
+            <div class="step">
+                <h4>Шаг 6: Сохранить настройки</h4>
+                <p>После заполнения всех параметров нажмите кнопку "Сохранить" для создания ретранслятора.</p>
+            </div>
+            <div class="step">
+                <h4>Шаг 7: Мониторинг и управление</h4>
+                <p>После создания ретранслятора вы можете</p>
+                <p>получать информацию по переданным сообщениям по объектам</p>
+                <img src="assets/g29.png" alt="Мониторинг ретрансляции" class="my-4 rounded shadow">
+            </div>
+            <div class="warning">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Внимание!</strong> Ретрансляция может быть автоматически заблокирована при следующих условиях:</p>
+                <ul class="list-disc list-inside ml-4">
                     <li>Устройство блокируется на 10 минут после пяти неуспешных попыток передачи данных</li>
+                    <li>При неуспешной авторизации устройство автоматически отключается из ретрансляции</li>
                     <li>Если удаленный сервер недоступен в течение 8 часов, ретрансляция полностью отключается</li>
                 </ul>
             </div>
-            <div class="note">
-                <p>
-                    <strong>Поддерживаемые протоколы ретрансляции:</strong> НИС (Олимпстрой), Тверь, Транснавигации, Wialon IPS v1/v2, ADM-600, EGTS, TracePackets (РНИРС), YandexTransport, Galileosky и другие.
-                </p>
+            <div class="info">
+                <p><i class="fas fa-info-circle"></i> <strong>Важно!</strong> Для хостинга ГЛОНАССсофт, расположенного в ДЦ1 (hosting.glonasssoft.ru), ретрансляция осуществляется с определенных IP-адресов. При необходимости добавьте эти адреса в белый список исключений на серверах, куда будут ретранслироваться данные.</p>
             </div>
         </section>
 
-        <section id="realtime" class="mb-8">
-            <h2 class="text-2xl font-bold">11. Проверка результатов в реальном времени</h2>
-            <p>
-                Система ГлонассСофт предоставляет возможности для мониторинга объектов и проверки результатов в режиме реального времени.
-            </p>
-            <div class="step">
-                <p><span class="step-number">1</span> Перейдите в раздел «Мониторинг» для отслеживания текущего местоположения и состояния объектов.</p>
+        <footer class="mt-12 p-6 bg-gray-100 rounded-lg text-center text-gray-600">
+            <p>© 2024 ГлонассСофт. Инструкция для новых сотрудников по работе с системой мониторинга.</p>
+            <div class="w-full flex justify-center mt-4">
+                <div class="w-24 border-b-2 border-blue-500"></div>
             </div>
-            <div class="step">
-                <p><span class="step-number">2</span> На карте отображаются все активные объекты с их текущим местоположением.</p>
-            </div>
-            <div class="step">
-                <p><span class="step-number">3</span> Для просмотра подробной информации об объекте кликните на его иконку на карте:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li>Текущее местоположение и адрес</li>
-                    <li>Скорость движения</li>
-                    <li>Состояние зажигания</li>
-                    <li>Показания датчиков (уровень топлива, температура и др.)</li>
-                    <li>Время последнего обновления данных</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">4</span> Для проверки работы датчиков в реальном времени используйте информационную панель объекта:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li>В свойствах объекта перейдите на вкладку «Датчики»</li>
-                    <li>Проверьте текущие показания всех установленных датчиков</li>
-                    <li>Убедитесь, что значения соответствуют ожидаемым</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">5</span> Для проверки работы уведомлений:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li>В разделе «Уведомления» убедитесь, что нужные уведомления активны</li>
-                    <li>Проверьте, поступают ли уведомления при возникновении соответствующих событий</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">6</span> Для проверки ретрансляции данных:</p>
-                <ul class="list-disc pl-8 mb-4">
-                    <li>В разделе «Ретрансляция» проверьте статус ретрансляторов</li>
-                    <li>Зеленый индикатор означает успешную передачу данных</li>
-                    <li>Оранжевый или красный индикатор указывает на проблемы с ретрансляцией</li>
-                </ul>
-            </div>
-            <div class="step">
-                <p><span class="step-number">7</span> Для оперативной проверки работы объекта постройте отчет «Навигационный» за последний час, чтобы увидеть все поступающие данные с объекта.</p>
-            </div>
-            <div class="tip">
-                <p>
-                    <strong>Совет:</strong> Для удобного мониторинга объектов в режиме реального времени рекомендуется использовать мобильное приложение ГлонассСофт, которое позволяет получать уведомления и отслеживать местоположение объектов с мобильного устройства.
-                </p>
-            </div>
-        </section>
-
-        <section id="conclusion" class="mb-8">
-            <h2 class="text-2xl font-bold">12. Заключение</h2>
-            <p>
-                Система мониторинга ГлонассСофт предоставляет широкие возможности для контроля и управления автопарком. В данной инструкции были рассмотрены основные функции системы:
-            </p>
-            <ul class="list-disc pl-8 mb-4">
-                <li>Создание и настройка объектов мониторинга</li>
-                <li>Добавление и настройка различных типов датчиков</li>
-                <li>Создание геозон для контроля перемещения объектов</li>
-                <li>Внесение тарировок для корректной работы датчиков</li>
-                <li>Создание отчетов для анализа данных</li>
-                <li>Настройка уведомлений о различных событиях</li>
-                <li>Ретрансляция данных на другие серверы мониторинга</li>
-                <li>Мониторинг объектов в режиме реального времени</li>
-            </ul>
-            <p>
-                Для успешного прохождения тестирования по работе с системой ГлонассСофт рекомендуется:
-            </p>
-            <ul class="list-disc pl-8 mb-4">
-                <li>Практиковаться в создании и настройке всех типов объектов, упомянутых в инструкции</li>
-                <li>Освоить процесс тарировки датчиков, особенно датчиков уровня топлива</li>
-                <li>Научиться создавать и настраивать геозоны различной сложности</li>
-                <li>Изучить возможности генерации различных типов отчетов</li>
-                <li>Понимать принципы работы системы уведомлений и ретрансляции данных</li>
-            </ul>
-            <p>
-                При возникновении вопросов или необходимости получения дополнительной информации рекомендуется обращаться к официальной документации ГлонассСофт, доступной по адресу <a href="https://wiki.glonasssoft.ru/" class="text-blue-600 hover:underline">https://wiki.glonasssoft.ru/</a>.
-            </p>
-            <div class="tip">
-                <p>
-                    <strong>Совет:</strong> Для более глубокого изучения системы рекомендуется просмотреть обучающие видео на официальном канале ГлонассСофт, доступные по адресу <a href="https://rutube.ru/u/glonasssoft/" class="text-blue-600 hover:underline">https://rutube.ru/u/glonasssoft/</a>.
-                </p>
-            </div>
-            <p class="mt-6 text-center">
-                Желаем успехов в работе с системой мониторинга ГлонассСофт!
-            </p>
-        </section>
-
-        <footer class="text-center text-gray-600 mt-12 pt-4 border-t border-gray-200">
-            <p>© 2025 ГлонассСофт. Инструкция для внутреннего использования.</p>
         </footer>
     </div>
 </body>
